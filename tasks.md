@@ -39,7 +39,3 @@ Stored in `todos.json`. Note that `id` must be unique (UUID).
     - Implement a main application loop.
     - Create a "Pre-Login" menu: Options for [1] Login, [2] Sign Up, [3] Exit.
       
-- [ ] **3. Test
-    
-
-- [ ] **3 1Test
