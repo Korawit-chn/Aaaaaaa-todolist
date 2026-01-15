@@ -1,6 +1,7 @@
 """Main entry point for the Todo List application."""
 
 import sys
+from auth import AuthManager
 
 
 class App:
@@ -9,6 +10,8 @@ class App:
     def __init__(self):
         """Initialize the application."""
         self.running = True
+        self.auth_manager = AuthManager("users.json")
+        self.current_user = None
 
     def display_pre_login_menu(self) -> None:
         """Display the pre-login menu and handle user input."""
@@ -35,20 +38,68 @@ class App:
     def login(self) -> None:
         """Handle user login."""
         print("\n--- Login ---")
-        # TODO: Implement login logic with AuthManager
-        print("Login feature coming soon!")
+        username = input("Enter username: ").strip()
+        password = input("Enter password: ").strip()
+        
+        success, message = self.auth_manager.login(username, password)
+        
+        if success:
+            self.current_user = username
+            print(f"\n✓ {message}")
+            self.main_app_menu()
+        else:
+            print(f"\n✗ {message}")
 
     def sign_up(self) -> None:
         """Handle user sign up."""
         print("\n--- Sign Up ---")
-        # TODO: Implement sign up logic with AuthManager
-        print("Sign up feature coming soon!")
+        username = input("Enter username: ").strip()
+        password = input("Enter password: ").strip()
+        confirm_password = input("Confirm password: ").strip()
+        
+        if password != confirm_password:
+            print("\n✗ Passwords do not match.")
+            return
+        
+        success, message = self.auth_manager.signup(username, password)
+        
+        if success:
+            print(f"\n✓ {message}")
+            print("You can now login with your new account.")
+        else:
+            print(f"\n✗ {message}")
 
     def exit_app(self) -> None:
         """Exit the application."""
         print("\nThank you for using Todo List Application. Goodbye!")
         self.running = False
         sys.exit(0)
+
+    def main_app_menu(self) -> None:
+        """Display the main menu after user logs in."""
+        print(f"\n{'='*40}")
+        print(f"Main Menu - Logged in as: {self.current_user}")
+        print(f"{'='*40}")
+        print("[1] View todos")
+        print("[2] Add todo")
+        print("[3] Logout")
+        print(f"{'='*40}")
+        
+        choice = input("\nEnter your choice (1-3): ").strip()
+        
+        if choice == "1":
+            print("\nTodo view feature coming soon!")
+        elif choice == "2":
+            print("\nTodo creation feature coming soon!")
+        elif choice == "3":
+            self.logout()
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.")
+
+    def logout(self) -> None:
+        """Handle user logout."""
+        print(f"\nGoodbye, {self.current_user}!")
+        self.current_user = None
 
     def run(self) -> None:
         """Start the main application loop."""

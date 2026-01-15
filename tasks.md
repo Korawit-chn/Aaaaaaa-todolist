@@ -42,4 +42,5 @@ Stored in `todos.json`. Note that `id` must be unique (UUID).
 - [ ] **3. AuthManager - Sign up and Login Interaction**
     - Create a `user.json` file to store user data.
     - Implement the Login and Sign up menu using `user.json` file.
+    - User need to insert all input require else it will loop again (Not except blank space).
       
