@@ -38,8 +38,27 @@ Stored in `todos.json`. Note that `id` must be unique (UUID).
 - [ ] **2. CLI Interface - Basic Interaction**
     - Implement a main application loop.
     - Create a "Pre-Login" menu: Options for [1] Login, [2] Sign Up, [3] Exit.
-      
-- [ ] **3. Test
-    
 
-- [ ] **3 1Test
+- [ ] **3. AuthManager - Sign up and Login Interaction**
+    - Create a `user.json` file to store user data.
+    - Implement the Login and Sign up menu using `user.json` file.
+    - User need to insert all input require else it will loop again (Not except blank space).
+
+- [ ] **4. Create and edit a to-do-list item**
+    - Create a new to-do item after login
+    - View your own to-do items
+    - Edit your existing to-do items
+    
+- [ ] **5. View all to-do-list items**
+
+- [ ] **6.View to-do-list item details**
+    - Title
+    - Details
+    - Priority (high, low, mid)
+    - Status (completed, pending)
+    - Owner
+    - Updated date
+    - Created date
+
+- [ ] **7. Mark a to-do-list item as completed**
+
