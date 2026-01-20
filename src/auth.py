@@ -8,14 +8,11 @@ from pathlib import Path
 class AuthManager:
     """Manages user authentication (sign up and login)."""
 
-    def __init__(self, users_file: str = "users.json"):
-        """Initialize the AuthManager.
-        
-        Args:
-            users_file: Path to the JSON file storing user data.
-        """
-        self.users_file = users_file
-        self._ensure_users_file_exists()
+    def __init__(self, data_dir: str = "data"):
+        """Initialize UserManager with a data directory."""
+        self.data_dir = Path(data_dir)
+        self.data_dir.mkdir(exist_ok=True)
+        self.todos_file = self.data_dir / "ีusers.json"
 
     def _ensure_users_file_exists(self) -> None:
         """Create the users.json file if it doesn't exist."""
