@@ -65,4 +65,11 @@ Stored in `todos.json`. Note that `id` must be unique (UUID).
     - Created date
 
 - [ ] **7. Mark a to-do-list item as completed**
+    - Implement mark_as_completed method in TodoManager.
+    - Validate that the provided todo_id exists and belongs to the current logged-in user.
+    - Update the item's status to COMPLETED (using the Enum) and refresh the updated_at timestamp.
+    - Persist the changes to todos.json.
+    - Update the CLI menu to include option [7] Mark as Completed.
+    - Prompt user for the ID and provide success/error feedback.
+
 

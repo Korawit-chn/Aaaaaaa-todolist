@@ -72,6 +72,22 @@ class TodoManager:
             return True
         return False
 
+    def mark_as_completed(self, todo_id: str, owner: str) -> bool:
+        """Mark a todo as completed if it exists and belongs to the owner.
+
+        Returns True if updated, False otherwise.
+        """
+        todos = self._load_all_todos()
+        for todo in todos:
+            if todo.id == todo_id:
+                if todo.owner != owner:
+                    return False
+                todo.status = Status.COMPLETED
+                todo.updated_at = datetime.now().isoformat()
+                self._save_all_todos(todos)
+                return True
+        return False
+
     def _load_all_todos(self) -> List[TodoItem]:
         """Load all todos from the JSON file."""
         if not self.todos_file.exists():

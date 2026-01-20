@@ -85,7 +85,7 @@ class App:
             print("[4] Mark todo as completed")
             print("[5] Delete a todo")
             print("[6] Logout")
-            print("[7] View all todos")
+            print("[7] Mark as Completed (by ID)")
             print("=" * 40)
 
             choice = input("\nEnter your choice (1-7): ").strip()
@@ -103,7 +103,7 @@ class App:
             elif choice == "6":
                 self.logout()
             elif choice == "7":
-                self.view_all_todos()
+                self.mark_completed_by_id()
             else:
                 print("Invalid choice. Please enter 1-7.")
 
@@ -230,6 +230,20 @@ class App:
             print(f"'{selected_todo.title}' marked as completed!")
         except ValueError:
             print("Invalid input.")
+
+    def mark_completed_by_id(self) -> None:
+        """Prompt for a todo ID and mark it completed via the manager."""
+        print("\n--- Mark Todo as Completed (by ID) ---")
+        todo_id = input("Enter the todo ID to mark as completed: ").strip()
+        if not todo_id:
+            print("ID cannot be empty.")
+            return
+
+        success = self.todo_manager.mark_as_completed(todo_id, self.current_user)
+        if success:
+            print("Todo marked as completed!")
+        else:
+            print("Failed to mark todo as completed. Check ID and ownership.")
 
     def delete_todo(self) -> None:
         """Delete a todo item."""
