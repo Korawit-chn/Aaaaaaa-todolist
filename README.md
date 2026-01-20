@@ -12,3 +12,11 @@ This is a simple To-Do-List command-line application written in Python. Users of
     * Created date
 * Mark a to-do-list item as completed
 
+* Group Aaaaaaa
+* Team members:
+  * 6688013	Korawit	Chantavilaiying
+  * 6688021	Apinut	Cotivongsa
+  * 6688030	Sarach 	Islam
+  * 6688173	Passakorn	Piboonmahachotikul
+  * 6688136	Sorayot	Udomkijkosol
+  * 6688133	Chatchanun	Toungpornsup 
