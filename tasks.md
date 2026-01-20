@@ -56,13 +56,16 @@ Stored in `todos.json`. Note that `id` must be unique (UUID).
     - Show "No todos found." when empty
 
 - [ ] **6.View to-do-list item details**
-    - Title
-    - Details
-    - Priority (high, low, mid)
-    - Status (completed, pending)
-    - Owner
-    - Updated date
-    - Created date
+    - Allow users to view to-do-list item details by inputing the to-do-list id
+    - Item details include
+        - Title
+        - Details
+        - Priority (high, low, mid)
+        - Status (completed, pending)
+        - Owner
+        - Updated date
+        - Created date
+    - The view to-do-list item details option will appear after the user is logged-in
 
 - [ ] **7. Mark a to-do-list item as completed**
     - Implement mark_as_completed method in TodoManager.
