@@ -26,7 +26,11 @@ class TodoManager:
         owner: str,
     ) -> TodoItem:
         """Create a new todo item and save it."""
+        # Assign a sequential numeric ID (stored as string) starting from 1.
+        todo_id = self._get_next_id()
+
         todo = TodoItem(
+            id=todo_id,
             title=title,
             details=details,
             priority=priority,
@@ -36,10 +40,31 @@ class TodoManager:
         self._save_todo(todo)
         return todo
 
+    def _get_next_id(self) -> str:
+        """Return the next numeric ID as a string.
+
+        This scans existing todos for numeric IDs and returns max+1.
+        Non-numeric IDs are ignored.
+        """
+        todos = self._load_all_todos()
+        max_id = 0
+        for todo in todos:
+            try:
+                val = int(todo.id)
+            except Exception:
+                continue
+            if val > max_id:
+                max_id = val
+        return str(max_id + 1)
+
     def get_todos_by_owner(self, owner: str) -> List[TodoItem]:
         """Retrieve all todos for a specific owner."""
         todos = self._load_all_todos()
         return [todo for todo in todos if todo.owner == owner]
+
+    def get_all_todos(self) -> List[TodoItem]:
+        """Return all todos stored in the system."""
+        return self._load_all_todos()
 
     def get_todo_by_id(self, todo_id: str) -> Optional[TodoItem]:
         """Retrieve a specific todo by ID."""

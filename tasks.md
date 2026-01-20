@@ -50,15 +50,22 @@ Stored in `todos.json`. Note that `id` must be unique (UUID).
     - Edit your existing to-do items
     
 - [ ] **5. View all to-do-list items**
+    - Add `get_all_todos()` in `TodoManager`
+    - Add `view_all_todos()` and menu entry in `App`
+    - Print ID, Title, Details, Priority, Status, Owner, Created, Updated
+    - Show "No todos found." when empty
 
 - [ ] **6.View to-do-list item details**
-    - Title
-    - Details
-    - Priority (high, low, mid)
-    - Status (completed, pending)
-    - Owner
-    - Updated date
-    - Created date
+    - Allow users to view to-do-list item details by inputing the to-do-list id
+    - Item details include
+        - Title
+        - Details
+        - Priority (high, low, mid)
+        - Status (completed, pending)
+        - Owner
+        - Updated date
+        - Created date
+    - The view to-do-list item details option will appear after the user is logged-in
 
 - [ ] **7. Mark a to-do-list item as completed**
     - Implement mark_as_completed method in TodoManager.

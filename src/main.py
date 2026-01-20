@@ -86,9 +86,10 @@ class App:
             print("[5] Delete a todo")
             print("[6] Logout")
             print("[7] Mark as Completed (by ID)")
+            print("[8] View todo details (by ID)")
             print("=" * 40)
 
-            choice = input("\nEnter your choice (1-6): ").strip()
+            choice = input("\nEnter your choice (1-7): ").strip()
 
             if choice == "1":
                 self.create_todo()
@@ -104,8 +105,10 @@ class App:
                 self.logout()
             elif choice == "7":
                 self.mark_completed_by_id()
+            elif choice == "8":
+                self.view_todo_details()
             else:
-                print("Invalid choice. Please enter 1-6.")
+                print("Invalid choice. Please enter 1-7.")
 
     def create_todo(self) -> None:
         """Create a new todo item."""
@@ -275,6 +278,44 @@ class App:
         """Logout the current user."""
         print(f"\nGoodbye, {self.current_user}!")
         self.current_user = None
+
+    def view_all_todos(self) -> None:
+        """View all todos across all users."""
+        print("\n--- All Todos ---")
+        todos = self.todo_manager.get_all_todos()
+
+        if not todos:
+            print("No todos found.")
+            return
+
+        for idx, todo in enumerate(todos, 1):
+            print(f"\n{idx}. [{todo.status.value}] {todo.title} (Priority: {todo.priority.value})")
+            print(f"   ID: {todo.id}")
+            print(f"   Owner: {todo.owner}")
+            print(f"   Details: {todo.details}")
+            print(f"   Created: {todo.created_at}")
+            print(f"   Updated: {todo.updated_at}")
+
+    def view_todo_details(self) -> None:
+        """View details for a specific todo by its ID."""
+        print("\n--- Todo Details ---")
+        todo_id = input("Enter the todo ID: ").strip()
+        if not todo_id:
+            print("ID cannot be empty.")
+            return
+
+        todo = self.todo_manager.get_todo_by_id(todo_id)
+        if not todo:
+            print("Todo not found.")
+            return
+
+        print(f"\nTitle: {todo.title}")
+        print(f"Details: {todo.details}")
+        print(f"Priority: {todo.priority.value}")
+        print(f"Status: {todo.status.value}")
+        print(f"Owner: {todo.owner}")
+        print(f"Created: {todo.created_at}")
+        print(f"Updated: {todo.updated_at}")
 
     def exit_app(self) -> None:
         """Exit the application."""
