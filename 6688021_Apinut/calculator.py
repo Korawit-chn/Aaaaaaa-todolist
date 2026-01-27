@@ -8,9 +8,10 @@ class Calculator:
     """A simple calculator class for basic arithmetic operations."""
 
     def calculate_velocity(distance: float, time: float) -> float:
-    if time <= 0:
-        raise ValueError("Time must be greater than zero")
-    return distance / time
+        if time <= 0:
+            raise ValueError("Time must be greater than zero")
+        return distance / time
+
 
     def add(self, a, b):
         """Add two numbers.
@@ -78,18 +79,19 @@ def main():
     print("2. Subtract (subtract)")
     print("3. Multiply (multiply)")
     print("4. Divide (divide)")
-    print("5. Exit (exit or quit)")
+    print("5. Calculate Velocity (velocity)")
+    print("6. Exit (exit or quit)")
     print()
     
     while True:
         try:
-            operation = input("Enter operation (add/subtract/multiply/divide) or 'exit': ").strip().lower()
+            operation = input("Enter operation (add/subtract/multiply/divide/velocity) or 'exit': ").strip().lower()
             
             if operation in ['exit', 'quit']:
                 print("Thank you for using the calculator!")
                 break
             
-            if operation not in ['add', 'subtract', 'multiply', 'divide']:
+            if operation not in ['add', 'subtract', 'multiply', 'divide', 'velocity']:
                 print("Invalid operation. Please try again.\n")
                 continue
             
@@ -110,6 +112,9 @@ def main():
             elif operation == 'divide':
                 result = calc.divide(num1, num2)
                 print(f"\n{num1} / {num2} = {result}\n")
+            elif operation == 'velocity':
+                result = calc.calculate_velocity(num1, num2)
+                print(f"\nVelocity = {result} units/time\n")
                 
         except ValueError as e:
             print(f"Error: {e}\n")
