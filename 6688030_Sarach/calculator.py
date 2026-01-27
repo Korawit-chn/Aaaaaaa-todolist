@@ -12,17 +12,12 @@ def divide(a, b):
         return "Error: Division by zero"
     return a / b
 
-def calculate_velocity(distance: float, time: float) -> float:
-    if time <= 0:
-        raise ValueError("Time must be greater than zero")
-    return distance / time
-
 def main():
     while True:
         print("Simple Calculator")
-        print("Operations: add, subtract, multiply, divide, velocity")
+        print("Operations: add, subtract, multiply, divide")
         op = input("Enter operation: ").strip().lower()
-        if op not in ['add', 'subtract', 'multiply', 'divide', 'velocity']:
+        if op not in ['add', 'subtract', 'multiply', 'divide']:
             print("Invalid operation")
             continue
         try:
@@ -39,12 +34,6 @@ def main():
             result = multiply(a, b)
         elif op == 'divide':
             result = divide(a, b)
-        elif op == 'velocity':
-            try:
-                result = calculate_velocity(a, b)
-            except ValueError as e:
-                print(e)
-                continue
         print(f"Result: {result}")
         again = input("Do another calculation? (y/n): ").strip().lower()
         if again != 'y':
