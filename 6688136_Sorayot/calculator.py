@@ -50,3 +50,22 @@ def calculate(operation, a, b):
         return divide(a, b)
     else:
         raise ValueError(f"Invalid operation: {operation}. Use '+', '-', '*', or '/'")
+
+
+def calculate_velocity(distance: float, time: float) -> float:
+    """
+    Calculate velocity given distance and time.
+    
+    Args:
+        distance: The distance traveled (in any unit of length)
+        time: The time taken (in any unit of time)
+    
+    Returns:
+        The velocity (distance/time)
+    
+    Raises:
+        ValueError: If time is less than or equal to zero
+    """
+    if time <= 0:
+        raise ValueError("Time must be greater than zero")
+    return distance / time
