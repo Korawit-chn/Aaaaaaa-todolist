@@ -26,6 +26,13 @@ def divide(a, b):
     return a / b
 
 
+def calculate_velocity(distance: float, time: float) -> float:
+    """Calculate velocity given distance and time. Raises ValueError if time is not greater than zero."""
+    if time <= 0:
+        raise ValueError("Time must be greater than zero")
+    return distance / time
+
+
 def display_menu():
     """Display the calculator menu."""
     print("\n" + "=" * 40)
