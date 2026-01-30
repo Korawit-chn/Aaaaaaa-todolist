@@ -1,0 +1,28 @@
+C4Container
+title Food Delivery System - Container Diagram
+
+Person(customer, "Customer")
+Person(staff, "Restaurant Staff")
+Person(admin, "Admin")
+
+System_Boundary(food, "Food Delivery System") {
+
+    Container(web, "Web App", "React", "Browser interface")
+    Container(mobile, "Mobile App", "Flutter", "Mobile ordering app")
+    Container(api, "Backend API", "Node.js/Express", "Business logic & REST APIs")
+    Container(db, "Database", "PostgreSQL", "Stores users, menus, orders")
+    Container(pay, "Payment Service", "Node.js", "Handles payment integration")
+}
+
+System_Ext(payment, "Payment Gateway")
+
+Rel(customer, web, "Uses")
+Rel(customer, mobile, "Uses")
+Rel(staff, web, "Manages orders")
+
+Rel(web, api, "API calls")
+Rel(mobile, api, "API calls")
+
+Rel(api, db, "Reads/Writes")
+Rel(api, pay, "Requests payment")
+Rel(pay, payment, "HTTPS")
