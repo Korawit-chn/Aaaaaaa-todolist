@@ -1,0 +1,16 @@
+C4Component
+title Food Delivery System - Backend API Component Diagram
+
+Container(api, "Backend API", "Node.js/Express")
+
+Component(auth, "Auth Controller", "Handles login & authentication")
+Component(order, "Order Service", "Processes orders")
+Component(menu, "Menu Service", "Manages menus")
+Component(repo, "Repository Layer", "Database operations")
+
+ContainerDb(db, "PostgreSQL")
+
+Rel(auth, repo, "Reads/Writes users")
+Rel(order, repo, "Reads/Writes orders")
+Rel(menu, repo, "Reads/Writes menus")
+Rel(repo, db, "SQL")
