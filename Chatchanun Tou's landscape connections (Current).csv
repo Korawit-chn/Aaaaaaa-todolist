@@ -1,0 +1,13 @@
+"Identifier","Sender Belongs Inside","Sender Object Name","Sender Object Type","Sender Object External","Sender Object Tags","Sender Object Technology","Sender Object Teams","Connection Name","Connection Status","Connection Direction","Connection Tags","Connection Technology","Connection Description","Via Belongs Inside","Via Object Name","Via Object Type","Via Object External","Via Object Tags","Via Object Technology","Via Object Teams","Receiver Belongs Inside","Receiver Object Name","Receiver Object Type","Receiver Object External","Receiver Object Tags","Receiver Object Technology","Receiver Object Teams"
+"CMG9DDAAXL9Do4xgbYY0","ICT To Do List > Default domain","Web App","App","No","","","","Api call","Live","Outgoing","","","","","","","","","","","ICT To Do List > Default domain","Web API","App","No","","",""
+"hx7s7y23AcZ3NHhROXhV","ICT To Do List > Default domain","Mobile App","App","No","","","","Make API call","Live","Outgoing","","","","","","","","","","","ICT To Do List > Default domain","Web API","App","No","","",""
+"GOF74tiJEG8ThdCUOErH","ICT To Do List > Default domain","Web API","App","No","","","","read/write data","Live","Outgoing","","","","","","","","","","","ICT To Do List > Default domain","Database","Store","No","","",""
+"X4cxVGGKWT0BQeSU2yOn","Default domain","ICT To Do List","System","No","","","","Retrieves courses, assignments, and submission status"", ""HTTPS/JSON""","Live","Outgoing","","","","","","","","","","","Default domain","mycourses","System","Yes","","",""
+"yH1KOiQxwY02fJoRmhI2","ICT To Do List > Default domain","Web API","App","No","","","","Trigger sync","Live","Outgoing","","","","","","","","","","","ICT To Do List > Default domain","MyCourse Connector","App","No","","",""
+"wJcYqGIVsRmwg9mzkMZG","Default domain","System Administrator","Actor","No","","","","Uses admin interface to manage system","Live","Outgoing","","","","","","","","","","","Default domain","ICT To Do List","System","No","","",""
+"9FlhtxPVFjPabTu5AlKZ","Default domain","Instructor","Actor","No","","","","Uses to view tasks and monitor deadlines","Live","Outgoing","","","```mermaid
+Uses to view tasks and monitor deadlines
+```
+
+","","","","","","","","Default domain","ICT To Do List","System","No","","",""
+"DCr8sFO3BgaCSBkb5oMd","Default domain","Student","Actor","No","","","","Uses web/mobile app to manage tasks","Live","Outgoing","","","","","","","","","","","Default domain","ICT To Do List","System","No","","",""
