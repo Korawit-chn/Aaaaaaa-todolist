@@ -9,9 +9,9 @@ System(ict_todo, "ICT To Do List", "Task management system for the ICT e learnin
 
 System_Ext(mycourses, "MyCourses", "External ICT e learning system that owns course, assignment, and submission data.")
 
-Rel(student, ict_todo, "Uses", "HTTPS")
-Rel(instructor, ict_todo, "Uses", "HTTPS")
-Rel(admin, ict_todo, "Uses", "HTTPS")
+Rel(student, ict_todo, "Manages personal tasks and tracks course work by syncing assignments", "HTTPS")
+Rel(instructor, ict_todo, "Views teaching-related tasks and monitors assignment deadlines", "HTTPS")
+Rel(admin, ict_todo, "Manages system configuration, user accounts, and monitors sync health", "HTTPS")
 
-Rel(ict_todo, mycourses, "Retrieves assignments and submission status", "HTTPS/JSON")
+Rel(ict_todo, mycourses, "Retrieves courses, assignments, and submission status", "HTTPS/JSON")
 UpdateLayoutConfig($c4ShapeInRow="2")

@@ -15,11 +15,11 @@ Container_Boundary(ict_boundary, "ICT To Do List") {
     Container(mycourses_connector, "MyCourses Connector", "Python", "Integration module for calling MyCourses web services")
 }
 
-Rel(student, web_app, "Uses", "HTTPS")
-Rel(student, mobile_app, "Uses", "HTTPS")
-Rel(instructor, web_app, "Uses", "HTTPS")
-Rel(instructor, mobile_app, "Uses", "HTTPS")
-Rel(admin, web_app, "Uses", "HTTPS")
+Rel(student, web_app, "Manages personal tasks and tracks course work", "HTTPS")
+Rel(student, mobile_app, "Manages personal tasks and tracks course work", "HTTPS")
+Rel(instructor, web_app, "Views teaching-related tasks and monitors deadlines", "HTTPS")
+Rel(instructor, mobile_app, "Views teaching-related tasks and monitors deadlines", "HTTPS")
+Rel(admin, web_app, "System configuration and sync monitoring", "HTTPS")
 
 Rel(web_app, web_api, "Makes API calls", "JSON/HTTPS")
 Rel(mobile_app, web_api, "Makes API calls", "JSON/HTTPS")
