@@ -1,0 +1,40 @@
+C4Component
+title Component diagram for ICT To Do List - Web API
+
+Container_Ext(web_app, "Web App", "React", "Browser-based single page application")
+Container_Ext(mobile_app, "Mobile App", "Flutter", "Cross-platform mobile application")
+ContainerDb(database, "Database", "PostgreSQL", "Stores user profiles, tasks, sync settings, and sync history")
+System_Ext(mycourses, "MyCourses", "External ICT e learning system")
+
+Container_Boundary(web_api, "Web API") {
+    Component(auth, "Authentication and Authorization", "Python", "Handles login, token validation, and access control")
+    Component(task_mgmt, "Task Management", "Python", "Handles CRUD operations for manual and imported tasks")
+    Component(sync_orch, "MyCourses Sync Orchestrator", "Python", "Manages sync workflow and decides when to call external services")
+    Component(mycourses_client, "MyCourses Client", "Python", "Calls MyCourses web services and handles HTTPS requests/JSON parsing")
+    Component(mapping, "Mapping", "Python", "Converts MyCourses data into internal task model")
+    Component(sync_history, "Sync History", "Python", "Records sync outcomes and provides data for monitoring")
+    Component(data_access, "Data Access", "Python", "Provides repository functions for database access")
+}
+
+Rel(web_app, auth, "Authenticates", "JSON/HTTPS")
+Rel(mobile_app, auth, "Authenticates", "JSON/HTTPS")
+
+Rel(web_app, task_mgmt, "CRUD tasks", "JSON/HTTPS")
+Rel(mobile_app, task_mgmt, "CRUD tasks", "JSON/HTTPS")
+
+Rel(task_mgmt, data_access, "Uses")
+Rel(data_access, database, "Reads/writes", "SQL")
+
+Rel(web_app, sync_orch, "Triggers sync", "JSON/HTTPS")
+Rel(mobile_app, sync_orch, "Triggers sync", "JSON/HTTPS")
+
+Rel(sync_orch, mycourses_client, "Calls")
+Rel(mycourses_client, mycourses, "Retrieves data", "JSON/HTTPS")
+
+Rel(mycourses_client, mapping, "Passes data")
+Rel(mapping, task_mgmt, "Provides mapped tasks")
+
+Rel(sync_orch, sync_history, "Records outcomes")
+Rel(sync_history, data_access, "Stores logs")
+
+UpdateLayoutConfig($c4ShapeInRow="3")   
