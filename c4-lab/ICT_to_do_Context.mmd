@@ -1,0 +1,28 @@
+C4Context
+    title System Context diagram for ICT To Do List
+    UpdateLayoutConfig($c4ShapeInRow="2")
+    Person(student, "Student", "Manages personal tasks and views course assignments.")
+    Person(instructor, "Instructor", "Views teaching-related tasks and monitors assignment deadlines.")
+    Person(admin, "System Administrator", "Manages system configuration and monitors sync health.")
+    System_Ext(mycourses, "MyCourses", "External ICT e-learning system providing course and assignment data.")
+    Container_Boundary(ict_todo, "ICT To Do List") {
+        Container(webApp, "Web App", "React", "Brower-based SPA for task management.")
+        Container(mobileApp, "Mobile App", "Flutter", "Cross-platform mobile app for IOS/Android")
+        ContainerDb(database, "Database", "PostgreSQL", "Stores user data, tasks, and sync information.")
+        Container(MyCourseConnector, "MyCourses Connector", "Python", "Integrateion module for MyCourses API")
+        Container_Boundary(API, "Web API") {
+            Component(authentication, "Authentication Service", "Handles user login, registration, and authentication.")
+            Component(CRUD, "CRUD", "Handles create, read, update, delete operations for tasks and user data.")
+            Component(sync, "Sync Service", "Manages synchronization of assignments and submission status with MyCourses.")
+        }
+    }
+
+    Rel(student, webApp, "Uses", "HTTPS")
+    Rel(student, mobileApp, "Uses", "HTTPS")
+    Rel(instructor, webApp, "Uses", "HTTPS")
+    Rel(admin, webApp, "Uses admin interface", "HTTPS")
+    Rel(webApp, authentication, "Make API calls", "HTTPS/JSON")
+    Rel(mobileApp, authentication, "Make API calls", "HTTPS/JSON")
+    Rel(CRUD, database, "Reads/Write Data", "SQL")
+    Rel(sync, MyCourseConnector, "Trigger sync", "Internal call")
+    Rel(MyCourseConnector, mycourses, "Retrieves data", "HTTPS/JSON")
